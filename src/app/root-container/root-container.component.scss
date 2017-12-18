@@ -1,0 +1,22 @@
+@import "../../variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 76px);
+  background: linear-gradient($light-color, white)
+}
+
+.dropdown {
+  width: 500px;
+  padding: $unit-5 0;
+}
+
+
+.menu {
+  width: 100%;
+  z-index: $zindex-2;
+}
