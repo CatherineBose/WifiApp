@@ -6,17 +6,20 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 76px);
+  height: calc(25vh - 70.5px);
   background: linear-gradient($light-color, white)
 }
 
 .dropdown {
   width: 500px;
-  padding: $unit-5 0;
+  padding: $unit-1 0 $unit-3 0;
 }
 
 
 .menu {
   width: 100%;
   z-index: $zindex-2;
+}
+img{
+  padding-bottom: 10px;
 }

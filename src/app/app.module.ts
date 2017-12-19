@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { WifiService } from './wifi.service';
+import { WifiService } from './services/wifi.service';
+import { MapService } from './services/map.service';
 
 import { AppComponent } from './app.component';
 import { RootContainerComponent } from './root-container/root-container.component';
@@ -29,7 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [WifiService],
+  providers: [WifiService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
