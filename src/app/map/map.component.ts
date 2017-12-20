@@ -42,10 +42,10 @@ export class MapComponent implements OnInit {
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
   this.map.on('click', (event) => {
-    console.log(event);
+    console.log(event.lngLat.lng);
     let marker = new mapboxgl.Marker();
     marker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
-    marker.addTo.map;
+    marker.addTo(this.map);
   })
 }
 }

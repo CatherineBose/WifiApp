@@ -7,7 +7,7 @@ export const environment = {
   production: false,
 
   mapbox:{
-  accessToken: '{{Add your own API key here, get it at Mapbox.com}}'
+  accessToken: 'pk.eyJ1IjoicnlhbmdraXN0IiwiYSI6ImNqYmR5Znc4NjJhM2Yyd256eDc1OHh6dGUifQ.L19D8DuLmhJ9pDgTLX6P7A'
 }
 
 };
