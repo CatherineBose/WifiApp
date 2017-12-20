@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MapService } from '../services/map.service';
 
 @Component({
   selector: 'app-root-container',
@@ -9,12 +10,10 @@ import { FormsModule } from '@angular/forms';
 export class RootContainerComponent implements OnInit {
   search;
 
-  constructor() { }
+  constructor(private _mapService : MapService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(){
-    console.log(this.search);
-  }
+    
 }

@@ -1,0 +1,7 @@
+@import "../variables";
+
+:host {
+    height: calc(100vh);
+    display: block;
+  background: linear-gradient($light-color, $gray-color)
+}

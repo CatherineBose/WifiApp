@@ -1,18 +1,33 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
 import { MapService } from '../services/map.service';
 import * as mapboxgl from 'mapbox-gl';
 import { GeoJson } from '../maps';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
+import { trigger,style,transition,animate,keyframes,query,stagger,state,} from '@angular/animations';
+import { Subject } from 'rxjs/Subject';
+
 
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
+  animations: [
+    trigger ('slide', [
+      state('hide', style({
+        'opacity': '0'
+      })),
+      state('show', style({
+        'opacity': '1',
+      })),
+      transition('hide => show', animate('900ms ease-in')),
+    ]),
+  ]
 })
 export class MapComponent implements OnInit {
-  private map: mapboxgl.Map;
-
+  private map: mapboxgl.Map;  
+  private state;
+  
   @Input() style: string = 'mapbox://styles/mapbox/dark-v9';
   
   constructor(private _mapService: MapService) { 
@@ -20,7 +35,11 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeMap()
+    this.initializeMap();  
+    this.state = 'hide';
+  }
+  ngAfterViewInit(){
+    Promise.resolve(null).then(() => this.state = 'show');
   }
 //Initalize Map with Coords
   private initializeMap() {
