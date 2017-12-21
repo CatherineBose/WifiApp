@@ -65,12 +65,12 @@ export class MapComponent implements OnInit {
       zoom: 13,
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
-  this.map.on('click', (event) => {
-    console.log(event.lngLat);
-    let marker = new mapboxgl.Marker();
-    marker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
-    marker.addTo(this.map);
-  })
+  // this.map.on('click', (event) => {
+  //   console.log(event.lngLat);
+  //   let marker = new mapboxgl.Marker();
+  //   marker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
+  //   marker.addTo(this.map);
+  // })
   this.map.on('load', (event)=>{
 
     this.locations.map(shop => this.createMarkerPopup(shop));
@@ -92,13 +92,13 @@ private createMarkerPopup(shop) {
   }).setHTML(`
     <img src="http://placehold.it/700x500" class="rounded mb-3 img-responsive">
   
-    <div class="h5">${shop.profile.name}</div>
-    <div class="text-gray">${shop.profile.headline}</div>
+    <div class="h5">${shop.attributes.name}</div>
+    <div class="text-gray">${shop.attributes.description }</div>
   `);
   
   // create the marker
   new mapboxgl.Marker(el)
-    .setLngLat(shop.coordinates)
+    .setLngLat(shop.attributes.coordinates)
     .setPopup(popup) // sets a popup on this marker
     .addTo(this.map);
 }

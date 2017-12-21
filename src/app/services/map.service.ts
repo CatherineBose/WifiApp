@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
+import 'rxjs/add/operator/map'
 
 
 
@@ -12,7 +13,7 @@ export class MapService {
    }
    
    getlocations(){
-     this._http.get('http://localhost:3000/shops').subscribe((data:any)=>{
+     this._http.get('http://api.localhost.code:3000/v1/locations').map((result)=>result['data']).subscribe((data:any)=>{
        this.locations.next(data);
      })
    }
