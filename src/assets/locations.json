@@ -20,13 +20,7 @@
           "headline": "The place by Target.",
           "featured": false
         },
-        "geojson": {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [-121.84499142245388, 37.21127209725284]
-          }
-        }
+        "coordinates": [-121.84499142245388, 37.21127209725284]
       },
       {
       "id": 3,
@@ -37,13 +31,7 @@
           "headline": "The place by Target.",
           "featured": true
         },
-        "geojson": {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [-161.84499162245388, 27.21127509725284]
-          }
-        }
+        "coordinates": [-161.84499162245388, 27.21127509725284]
       },
       {
       "id": 4,
@@ -54,13 +42,7 @@
           "headline": "The place by Target.",
           "featured": true
         },
-        "geojson": {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [-161.84499162245388, 27.21127509725284]
-          }
-        }
+        "coordinates": [-161.84499162245388, 27.21127509725284]
       },
       {
       "id": 5,
@@ -71,13 +53,7 @@
           "headline": "The place by Target.",
           "featured": true
         },
-        "geojson": {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
             "coordinates": [-161.84499162245388, 27.21127509725284]
-          }
-        }
       }
     ]
   }

@@ -27,6 +27,7 @@ import { trigger,style,transition,animate,keyframes,query,stagger,state,} from '
 export class MapComponent implements OnInit {
   private map: mapboxgl.Map;  
   private state;
+  private locations;
   
   @Input() style: string = 'mapbox://styles/mapbox/dark-v9';
   
@@ -37,6 +38,10 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initializeMap();  
     this.state = 'hide';
+    this._mapService.getlocations();
+    this._mapService.locations.subscribe((data:any)=>{
+      this.locations=data;
+    })
   }
   ngAfterViewInit(){
     Promise.resolve(null).then(() => this.state = 'show');
@@ -66,6 +71,37 @@ export class MapComponent implements OnInit {
     marker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
     marker.addTo(this.map);
   })
+  this.map.on('load', (event)=>{
+
+    this.locations.map(shop => this.createMarkerPopup(shop));
+  })
 }
+
+private createMarkerPopup(shop) {
+  // Create element
+  let el = document.createElement('div');
+  el.className = 'tg-marker';
+  el.id = 'tg_marker_' + shop.id;
+
+  // Create Popup
+  console.log(shop.coordinates)
+  let popup = new mapboxgl.Popup({
+    closeOnClick: false, 
+    closeButton: false, 
+    offset: { 'bottom': [0, -12] }
+  }).setHTML(`
+    <img src="http://placehold.it/700x500" class="rounded mb-3 img-responsive">
+  
+    <div class="h5">${shop.profile.name}</div>
+    <div class="text-gray">${shop.profile.headline}</div>
+  `);
+  
+  // create the marker
+  new mapboxgl.Marker(el)
+    .setLngLat(shop.coordinates)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(this.map);
+}
+
 }
  
