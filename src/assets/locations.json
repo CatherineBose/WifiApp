@@ -1,9 +1,83 @@
 {
-    "locations":[{
-        "longitute":-113,
-        "latitude":-113
-    },{
-
-    }
+    "shops": [
+      {
+        "id": 1,
+        "slug": "amore-cafe-and-tea",
+        "location": "bay-area",
+        "profile": {
+          "name": "Amore Cafe & Tea",
+          "headline": "The place by Target.",
+          "featured": true
+        },
+        "coordinates": [-121.8554677, 37.2621096]
+      },
+      {
+      "id": 2,
+      "slug": "t4",
+      "location": "bay-area",
+        "profile": {
+          "name": "T4",
+          "headline": "The place by Target.",
+          "featured": false
+        },
+        "geojson": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-121.84499142245388, 37.21127209725284]
+          }
+        }
+      },
+      {
+      "id": 3,
+      "slug": "happy-lemon",
+      "location": "bay-area",
+        "profile": {
+          "name": "Happy Lemon",
+          "headline": "The place by Target.",
+          "featured": true
+        },
+        "geojson": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-161.84499162245388, 27.21127509725284]
+          }
+        }
+      },
+      {
+      "id": 4,
+      "slug": "black-pearl",
+      "location": "bay-area",
+        "profile": {
+          "name": "Black Pearl",
+          "headline": "The place by Target.",
+          "featured": true
+        },
+        "geojson": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-161.84499162245388, 27.21127509725284]
+          }
+        }
+      },
+      {
+      "id": 5,
+      "slug": "boba-pub",
+      "location": "bay-area",
+        "profile": {
+          "name": "Boba Pub",
+          "headline": "The place by Target.",
+          "featured": true
+        },
+        "geojson": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-161.84499162245388, 27.21127509725284]
+          }
+        }
+      }
     ]
-}
+  }
