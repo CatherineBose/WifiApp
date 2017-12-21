@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { MapContainerComponent } from './map-container/map-container.component';
 import { MapComponent } from './map/map.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     MapContainerComponent,
     MapComponent,
-    FooterComponent
+    FooterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

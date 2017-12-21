@@ -1,8 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
-import { Router } from '@angular/router';
-import { Route } from '@angular/router/src/config';
-import { MapService } from '../services/map.service';
+import { Component, OnInit } from '@angular/core';
+
 
 
 @Component({
@@ -11,14 +8,10 @@ import { MapService } from '../services/map.service';
   styleUrls: ['./header.component.scss'],  
 })
 export class HeaderComponent implements OnInit {
-  search;
-  constructor( private _route : Router, private _mapService: MapService) { }
+
+  constructor() { }
   
   
   ngOnInit() {
-  }
-  onSubmit(){
-    console.log(this.search);
-    this._route.navigate([this.search]);;
   }
 }

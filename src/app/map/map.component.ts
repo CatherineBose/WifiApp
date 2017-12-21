@@ -1,10 +1,10 @@
-import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input} from '@angular/core';
 import { MapService } from '../services/map.service';
 import * as mapboxgl from 'mapbox-gl';
 import { GeoJson } from '../maps';
 import { environment } from '../../environments/environment';
 import { trigger,style,transition,animate,keyframes,query,stagger,state,} from '@angular/animations';
-import { Subject } from 'rxjs/Subject';
+
 
 
 
@@ -61,7 +61,7 @@ export class MapComponent implements OnInit {
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
   this.map.on('click', (event) => {
-    console.log(event.lngLat.lng);
+    console.log(event.lngLat);
     let marker = new mapboxgl.Marker();
     marker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
     marker.addTo(this.map);
