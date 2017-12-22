@@ -25,9 +25,10 @@ export class MapComponent implements OnInit {
   private map: mapboxgl.Map;  
   private state;
   private locations;
+  private center: Array<number> = [-122.442781539829111, 37.76390011952246];
   
   @Input() style: string = 'mapbox://styles/mapbox/dark-v9';
-  
+
   constructor(private _mapService: MapService) { 
     mapboxgl.accessToken = environment.mapbox.accessToken
   }
@@ -38,11 +39,36 @@ export class MapComponent implements OnInit {
     this._mapService
       .locations
       .subscribe(locations => this.locations = locations)
+
+    // this.route
+    //   .queryParams
+    //   .subscribe(params => {
+    //     // params['search']
+    //     // Take that param
+    //     // Search google
+    //     //         
+    //     // 🛩
+    //     this.map.flyTo({
+    //       center: // [Coords from google]
+    //     });
+    //   })
+
+    // this.route
+    //   .paramsMap()
+    //   .subscribe(params => {
+    //     // make get request to api for single location
+    //  center to those coords
+    //     //         
+    //     // 🛩
+    //     this.map.flyTo({
+    //       center: // [Coords from google]
+    //     });
+    //   })
   }
   ngAfterViewInit(){
     Promise.resolve(null).then(() => this.state = 'show');
   }
-//Initalize Map with Coords
+  // Initalize Map with Coords
   private initializeMap() {
       // Get coordinates
       navigator.geolocation.getCurrentPosition(position => {
@@ -59,6 +85,7 @@ export class MapComponent implements OnInit {
       container: 'map',
       style: this.style,
       zoom: 13,
+      center: this.center
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
   // this.map.on('click', (event) => {
