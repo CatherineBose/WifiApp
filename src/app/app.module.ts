@@ -15,6 +15,10 @@ import { MapContainerComponent } from './map-container/map-container.component';
 import { MapComponent } from './map/map.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { SearchService } from './services/search.service';
+import { LocationContainerComponent } from './location-container/location-container.component';
 
 
 @NgModule({
@@ -25,7 +29,10 @@ import { NavComponent } from './nav/nav.component';
     MapContainerComponent,
     MapComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    NavbarComponent,
+    SearchBoxComponent,
+    LocationContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import { NavComponent } from './nav/nav.component';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [WifiService, MapService],
+  providers: [WifiService, MapService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

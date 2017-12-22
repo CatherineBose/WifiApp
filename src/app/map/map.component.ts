@@ -5,9 +5,6 @@ import { GeoJson } from '../maps';
 import { environment } from '../../environments/environment';
 import { trigger,style,transition,animate,keyframes,query,stagger,state,} from '@angular/animations';
 
-
-
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',

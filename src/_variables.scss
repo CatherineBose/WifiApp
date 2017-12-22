@@ -10,14 +10,23 @@ $secondary-color-dark: darken($secondary-color, 3%);
 $secondary-color-light: lighten($secondary-color, 3%);
 
 // Gray colors
+$gray-darkest: lighten($gray-base, 15%);
+$gray-darker: lighten($gray-base, 30%);
+$gray-dark: lighten($gray-base, 45%);
+$gray-light: lighten($gray-base, 60%);
+$gray-lighter: lighten($gray-base, 75%);
+$gray-lightest: lighten($gray-base, 90%);
+
 $dark-color: #454d5d;
-$light-color: lighten($gray-base, 80%);
-$gray-color: lighten($dark-color, 40%);
-$gray-color-dark: darken($gray-color, 25%);
-$gray-color-light: lighten($gray-color, 20%);
+$light-color: lighten($gray-base, 80%); // text-muted
+
+$gray-color: $gray-light;
+$gray-color-dark: $gray-dark;
+$gray-color-light: $gray-lightest;
 
 $border-color: lighten($dark-color, 60%);
 $border-color-dark: darken($border-color, 10%);
+
 $bg-color: lighten($dark-color, 66%);
 $bg-color-dark: darken($bg-color, 3%);
 $bg-color-light: $light-color;
@@ -34,6 +43,9 @@ $body-bg: $bg-color;
 $body-font-color: lighten($dark-color, 5%);
 $link-color: $primary-color;
 $link-color-dark: darken($link-color, 5%);
+
+// Navbar
+$navbar-height: 90px;
 
 // Fonts
 // Credit: https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
