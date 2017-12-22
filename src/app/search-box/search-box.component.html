@@ -6,6 +6,7 @@
     <li *ngIf="locations != null"  class="menu-item text-bold">
       <a href="#" [routerLink]="['']" [queryParams]="{ search: (term$ | async) }">Search nearby "{{ term$ | async }}"</a>
     </li>
+    <li *ngIf="locations" class="p-2 m-0 text-gray text-center navbar-brand">These are some of the selections we have:</li>
     <li *ngFor="let location of locations"  class="menu-item">
       <a [routerLink]="['/locations', location.id]">{{ location.attributes.name }}</a>
     </li>

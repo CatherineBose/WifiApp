@@ -98,7 +98,7 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 13,
+      zoom: 8,
       center: this.center
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
@@ -127,7 +127,7 @@ private createMarkerPopup(location) {
     closeButton: false, 
     offset: { 'bottom': [0, -12] }
   }).setHTML(`
-    <img src="http://placehold.it/700x500" class="rounded mb-3 img-responsive">
+    <img src="${location.attributes.image_url}" class="rounded mb-3 img-responsive">
   
     <div class="h5">${location.attributes.name}</div>
     <div class="text-gray">${location.attributes.description }</div>

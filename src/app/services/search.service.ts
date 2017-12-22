@@ -12,7 +12,7 @@ export class SearchService {
   search(terms) {
     return terms
       // Only subscribe after 300ms (debounce user input while typing search term)
-      .debounceTime(300)
+      .debounceTime(100)
       // Send the string and not an observable by using switchMap
       .switchMap(term => this.rawsearch(term))
       // Ignore out of order responses (ex: the first query came after last)
