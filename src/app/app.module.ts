@@ -13,7 +13,6 @@ import { RootContainerComponent } from './root-container/root-container.componen
 import { HeaderComponent } from './header/header.component';
 import { MapContainerComponent } from './map-container/map-container.component';
 import { MapComponent } from './map/map.component';
-import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -29,7 +28,6 @@ import { LoginContainerComponent } from './login-container/login-container.compo
     HeaderComponent,
     MapContainerComponent,
     MapComponent,
-    FooterComponent,
     NavComponent,
     NavbarComponent,
     SearchBoxComponent,
