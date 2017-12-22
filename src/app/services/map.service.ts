@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class MapService {
   locations: BehaviorSubject<any[]> = new BehaviorSubject([]); 
+  searchTerm;
 
   constructor(private _http:HttpClient) { }
 
@@ -19,7 +20,7 @@ export class MapService {
    }
    getLocation(id){
      return this._http
-     .get('http://api.localhost.code:3000/v1/locations'+id)
+     .get('http://api.localhost.code:3000/v1/locations/'+id)
      .map(result => result['data'])
    }
    getGoogleLocation(term){

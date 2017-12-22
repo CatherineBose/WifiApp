@@ -4,6 +4,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { GeoJson } from '../maps';
 import { environment } from '../../environments/environment';
 import { trigger,style,transition,animate,keyframes,query,stagger,state,} from '@angular/animations';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -26,10 +27,15 @@ export class MapComponent implements OnInit {
   private state;
   private locations;
   private center: Array<number> = [-122.442781539829111, 37.76390011952246];
+  private fly;
   
   @Input() style: string = 'mapbox://styles/mapbox/dark-v9';
 
-  constructor(private _mapService: MapService) { 
+  constructor(
+    private _mapService: MapService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { 
     mapboxgl.accessToken = environment.mapbox.accessToken
   }
 
@@ -40,20 +46,30 @@ export class MapComponent implements OnInit {
       .locations
       .subscribe(locations => this.locations = locations)
 
-    // this.route
-    //   .queryParams
-    //   .subscribe(params => {
-    //     // params['search']
-    //     // Take that param
-    //     // Search google
-    //     //         
-    //     // 🛩
-    //     this.map.flyTo({
-    //       center: // [Coords from google]
-    //     });
-    //   })
+    this.route
+      .queryParams
+      .subscribe(params => {
+        console.log(params['search'])     
+        this._mapService.getGoogleLocation(params['search']).subscribe((results) => {
+          // 🛩
+          console.log(results[0].geometry.location)
+          this.map.flyTo({
+            center: results[0].geometry.location// [Coords from google]
+          });
+        })
+      })
+    this.route
+      .paramMap.subscribe((params) => {
+        this._mapService.getLocation(params.get('id')).subscribe((location)=>{
+          this.map.flyTo({
+            center:location.attributes.coordinates
+          });
+        });
+        
+      
+      })
 
-    // this.route
+    // this.router
     //   .paramsMap()
     //   .subscribe(params => {
         
@@ -69,12 +85,12 @@ export class MapComponent implements OnInit {
   // Initalize Map with Coords
   private initializeMap() {
       // Get coordinates
-      navigator.geolocation.getCurrentPosition(position => {
-        // 🛩
-        this.map.flyTo({
-          center: [position.coords.longitude, position.coords.latitude]
-        });
-      });
+      // navigator.geolocation.getCurrentPosition(position => {
+      //   // 🛩
+      //   this.map.flyTo({
+      //     center: [position.coords.longitude, position.coords.latitude]
+      //   });
+      // });
       this.buildMap()
     }
 //Build Map
@@ -93,7 +109,7 @@ export class MapComponent implements OnInit {
   //   marker.addTo(this.map);
   // })
   this.map.on('load', (event)=>{
-    console.log(this.locations)
+    
     this.locations.map(location => this.createMarkerPopup(location));
   })
 }
