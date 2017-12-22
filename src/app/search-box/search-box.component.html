@@ -1,10 +1,10 @@
 <img class="logo" src="/assets/logo.svg" height="48" width="48" />
 
 <div class="dropdown">
-  <input (input)="term$.next($event.target.value)" class="form-input input-lg dropdown-toggle" type="text" placeholder="search">
+  <input #searchTerm (input)="term$.next($event.target.value)" class="form-input input-lg dropdown-toggle" type="text" placeholder="search">
   <ul class="menu">
     <li *ngIf="locations != null"  class="menu-item text-bold">
-      <a href="#">Search nearby "{{ term$ | async }}"</a>
+      <a href="#" [routerLink]="['']" [queryParams]="{ search: (term$ | async) }">Search nearby "{{ term$ | async }}"</a>
     </li>
     <li *ngFor="let location of locations"  class="menu-item">
       <a [routerLink]="['/locations', location.id]">{{ location.attributes.name }}</a>

@@ -25,9 +25,10 @@ export class MapComponent implements OnInit {
   private map: mapboxgl.Map;  
   private state;
   private locations;
+  private center: Array<number> = [-122.442781539829111, 37.76390011952246];
   
   @Input() style: string = 'mapbox://styles/mapbox/dark-v9';
-  
+
   constructor(private _mapService: MapService) { 
     mapboxgl.accessToken = environment.mapbox.accessToken
   }
@@ -35,15 +36,37 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initializeMap();  
     this.state = 'hide';
-    this._mapService.getlocations();
-    this._mapService.locations.subscribe((data:any)=>{
-      this.locations=data;
-    })
+    this._mapService
+      .locations
+      .subscribe(locations => this.locations = locations)
+
+    // this.route
+    //   .queryParams
+    //   .subscribe(params => {
+    //     // params['search']
+    //     // Take that param
+    //     // Search google
+    //     //         
+    //     // 🛩
+    //     this.map.flyTo({
+    //       center: // [Coords from google]
+    //     });
+    //   })
+
+    // this.route
+    //   .paramsMap()
+    //   .subscribe(params => {
+        
+    //     // 🛩
+    //     this.map.flyTo({
+    //       center: // [Coords from google]
+    //     });
+    //   })
   }
   ngAfterViewInit(){
     Promise.resolve(null).then(() => this.state = 'show');
   }
-//Initalize Map with Coords
+  // Initalize Map with Coords
   private initializeMap() {
       // Get coordinates
       navigator.geolocation.getCurrentPosition(position => {
@@ -60,6 +83,7 @@ export class MapComponent implements OnInit {
       container: 'map',
       style: this.style,
       zoom: 13,
+      center: this.center
   });
   //Add a marker to Map (Not working, But is showing event data in console.)
   // this.map.on('click', (event) => {
@@ -69,19 +93,19 @@ export class MapComponent implements OnInit {
   //   marker.addTo(this.map);
   // })
   this.map.on('load', (event)=>{
-
-    this.locations.map(shop => this.createMarkerPopup(shop));
+    console.log(this.locations)
+    this.locations.map(location => this.createMarkerPopup(location));
   })
 }
 
-private createMarkerPopup(shop) {
+private createMarkerPopup(location) {
   // Create element
   let el = document.createElement('div');
   el.className = 'tg-marker';
-  el.id = 'tg_marker_' + shop.id;
+  el.id = 'tg_marker_' + location.id;
 
   // Create Popup
-  console.log(shop.coordinates)
+  console.log(location.coordinates)
   let popup = new mapboxgl.Popup({
     closeOnClick: false, 
     closeButton: false, 
@@ -89,13 +113,13 @@ private createMarkerPopup(shop) {
   }).setHTML(`
     <img src="http://placehold.it/700x500" class="rounded mb-3 img-responsive">
   
-    <div class="h5">${shop.attributes.name}</div>
-    <div class="text-gray">${shop.attributes.description }</div>
+    <div class="h5">${location.attributes.name}</div>
+    <div class="text-gray">${location.attributes.description }</div>
   `);
   
   // create the marker
   new mapboxgl.Marker(el)
-    .setLngLat(shop.attributes.coordinates)
+    .setLngLat(location.attributes.coordinates)
     .setPopup(popup) // sets a popup on this marker
     .addTo(this.map);
 }
