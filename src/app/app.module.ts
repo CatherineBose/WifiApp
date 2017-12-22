@@ -19,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchService } from './services/search.service';
 import { LocationContainerComponent } from './location-container/location-container.component';
+import { LoginContainerComponent } from './login-container/login-container.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { LocationContainerComponent } from './location-container/location-contai
     NavComponent,
     NavbarComponent,
     SearchBoxComponent,
-    LocationContainerComponent
+    LocationContainerComponent,
+    LoginContainerComponent
   ],
   imports: [
     BrowserModule,
