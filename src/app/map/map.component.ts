@@ -69,12 +69,12 @@ export class MapComponent implements OnInit {
   // Initalize Map with Coords
   private initializeMap() {
       // Get coordinates
-      navigator.geolocation.getCurrentPosition(position => {
-        // 🛩
-        this.map.flyTo({
-          center: [position.coords.longitude, position.coords.latitude]
-        });
-      });
+      // navigator.geolocation.getCurrentPosition(position => {
+      //   // 🛩
+      //   this.map.flyTo({
+      //     center: [position.coords.longitude, position.coords.latitude]
+      //   });
+      // });
       this.buildMap()
     }
 //Build Map
