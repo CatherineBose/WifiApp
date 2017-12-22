@@ -13,7 +13,7 @@ export class MapService {
   constructor(private _http:HttpClient) { }
 
    getlocations() {
-     this._http
+     return this._http
       .get('http://api.localhost.code:3000/v1/locations')
       .map(result => result['data'])
    }

@@ -17,6 +17,10 @@ export class RootContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._mapService
+      .getlocations()
+      .subscribe(locations => this._mapService.locations.next(locations));
+
     this.route
       .queryParams
       .subscribe(params => {

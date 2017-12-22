@@ -35,10 +35,9 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initializeMap();  
     this.state = 'hide';
-    this._mapService.getlocations();
-    this._mapService.locations.subscribe((data:any)=>{
-      this.locations=data;
-    })
+    this._mapService
+      .locations
+      .subscribe(locations => this.locations = locations)
   }
   ngAfterViewInit(){
     Promise.resolve(null).then(() => this.state = 'show');
@@ -69,19 +68,19 @@ export class MapComponent implements OnInit {
   //   marker.addTo(this.map);
   // })
   this.map.on('load', (event)=>{
-
-    this.locations.map(shop => this.createMarkerPopup(shop));
+    console.log(this.locations)
+    this.locations.map(location => this.createMarkerPopup(location));
   })
 }
 
-private createMarkerPopup(shop) {
+private createMarkerPopup(location) {
   // Create element
   let el = document.createElement('div');
   el.className = 'tg-marker';
-  el.id = 'tg_marker_' + shop.id;
+  el.id = 'tg_marker_' + location.id;
 
   // Create Popup
-  console.log(shop.coordinates)
+  console.log(location.coordinates)
   let popup = new mapboxgl.Popup({
     closeOnClick: false, 
     closeButton: false, 
@@ -89,13 +88,13 @@ private createMarkerPopup(shop) {
   }).setHTML(`
     <img src="http://placehold.it/700x500" class="rounded mb-3 img-responsive">
   
-    <div class="h5">${shop.attributes.name}</div>
-    <div class="text-gray">${shop.attributes.description }</div>
+    <div class="h5">${location.attributes.name}</div>
+    <div class="text-gray">${location.attributes.description }</div>
   `);
   
   // create the marker
   new mapboxgl.Marker(el)
-    .setLngLat(shop.attributes.coordinates)
+    .setLngLat(location.attributes.coordinates)
     .setPopup(popup) // sets a popup on this marker
     .addTo(this.map);
 }
