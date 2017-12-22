@@ -56,9 +56,7 @@ export class MapComponent implements OnInit {
     // this.route
     //   .paramsMap()
     //   .subscribe(params => {
-    //     // make get request to api for single location
-    //  center to those coords
-    //     //         
+        
     //     // 🛩
     //     this.map.flyTo({
     //       center: // [Coords from google]
