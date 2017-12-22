@@ -6,20 +6,17 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 76px);
+  height: calc(100vh - #{$navbar-height});
 }
 
 .dropdown {
-  width: 500px;
-  padding: $unit-1 0 $unit-3 0;
+  width: 50%;
 }
-
 
 .menu {
   width: 100%;
-  z-index: $zindex-2;
-}
-img{
-  padding-bottom: 10px;
 }
 
+.logo {
+  margin-bottom: $unit-5;
+}

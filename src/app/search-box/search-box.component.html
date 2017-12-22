@@ -1,0 +1,19 @@
+<img class="logo" src="/assets/logo.svg" height="48" width="48" />
+
+<div class="dropdown">
+  <input (input)="term$.next($event.target.value)" class="form-input input-lg dropdown-toggle" type="text" placeholder="search">
+  <ul class="menu">
+    <li *ngIf="locations != null"  class="menu-item text-bold">
+      <a href="#">Search nearby "{{ term$ | async }}"</a>
+    </li>
+    <li *ngFor="let location of locations"  class="menu-item">
+      <a [routerLink]="['/locations', location.id]">{{ location.attributes.name }}</a>
+    </li>
+    <li *ngIf="locations == null" class="p-2 m-0 text-gray text-center navbar-brand">
+      Search for anything
+    </li>
+    <li *ngIf="locations?.length == 0" class="p-2 m-0 text-gray text-center navbar-brand">
+      No locations found
+    </li>
+  </ul>
+</div>

@@ -1,1 +1,3 @@
-<app-header></app-header>
+<app-search-box *ngIf="!displayMap"></app-search-box>
+<app-map *ngIf="displayMap"></app-map>
+<app-navbar></app-navbar>
